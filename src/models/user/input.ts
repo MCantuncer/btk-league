@@ -1,6 +1,6 @@
 import { Field, InputType } from 'type-graphql';
 import { UserTypeEnum } from './enums';
-import { IsEmail } from 'class-validator';
+import { IsEmail, MinLength } from 'class-validator';
 import { BaseInputWithDate } from '../common';
 
 @InputType()
@@ -19,5 +19,6 @@ export class UserInput extends BaseInputWithDate {
   email: string;
 
   @Field(() => String)
+  @MinLength(6)
   password: string;
 }

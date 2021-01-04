@@ -1,4 +1,5 @@
 import { isNullOrUndefined } from '@typegoose/typegoose/lib/internal/utils';
+import * as uuid from 'uuid';
 
 export function copyFields(obj, from, to) {
   if (!isNullOrUndefined(obj) && typeof obj === 'object') {
@@ -10,4 +11,8 @@ export function copyFields(obj, from, to) {
       }
     }
   }
+}
+
+export function createUUID() {
+  return uuid.v4();
 }

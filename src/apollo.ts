@@ -1,6 +1,6 @@
 import path from 'path';
 import { buildFederatedSchema } from './helpers/buildFederatedSchema';
-import { TypegooseMiddleware } from './config/middlewares';
+import { TypegooseMiddleware } from '../config/middlewares';
 import { ApolloServer } from 'apollo-server-express';
 import { authChecker } from './permissions';
 import { GraphQLTimestamp } from 'type-graphql';

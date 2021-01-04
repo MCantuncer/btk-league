@@ -1,0 +1,9 @@
+{
+  "error_messages": {
+    "global": {
+      "database_error": "Error occurred during database operation."
+    }
+  }
+}
+
+

@@ -1,7 +1,8 @@
-import database from '../config/database';
+import database from '../../config/database';
 import { LogLevels, mongoose, ReturnModelType, setLogLevel } from '@typegoose/typegoose';
 import { MongoMemoryReplSet } from 'mongodb-memory-server';
 import { UserModel } from '../models/user/entity';
+import { ClientSession } from 'mongoose';
 
 export class DatabaseHelpers {
   static async connectDatabase(connString): Promise<void> {
@@ -54,5 +55,21 @@ export const createCollections = async (): Promise<void> => {
 export const closeDatabaseConn = async (): Promise<void> => {
   await DatabaseHelpers.closeDatabaseConn();
 };
+
+export async function withTransaction<T>(func: (session: ClientSession) => Promise<T>) {
+  const session: ClientSession = await mongoose.startSession();
+
+  try {
+    session.startTransaction();
+    const res = await func(session);
+    await session.commitTransaction();
+    return res;
+  } catch (err) {
+    await session.abortTransaction();
+    throw err;
+  } finally {
+    session.endSession();
+  }
+}
 
 // mongodb+srv://admin:<password>@cluster0.94akg.mongodb.net/<dbname>?retryWrites=true&w=majority

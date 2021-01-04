@@ -1,6 +1,6 @@
 import { MiddlewareFn } from 'type-graphql';
 import { ApolloError } from 'apollo-server-express';
-import { copyFields } from '../utils/dataUtils';
+import { copyFields } from '../src/utils/dataUtils';
 
 export const TypegooseMiddleware: MiddlewareFn = async (_, next) => {
   try {

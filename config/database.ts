@@ -1,5 +1,5 @@
 import * as dotenv from 'dotenv';
-import { getEnvPath } from '../../environments/helpers';
+import { getEnvPath } from '../environments/helpers';
 dotenv.config({ path: getEnvPath() });
 
 export default {
