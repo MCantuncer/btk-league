@@ -1,4 +1,4 @@
-import { Field, InputType } from 'type-graphql';
+import { Field, InputType, ObjectType } from 'type-graphql';
 import { IsEmail, MinLength } from 'class-validator';
 
 @InputType()
@@ -10,4 +10,10 @@ export class LoginInput {
   @Field(() => String)
   @MinLength(6)
   password: string;
+}
+
+@ObjectType()
+export class CheckResponse {
+  @Field(() => Boolean)
+  exists: boolean;
 }

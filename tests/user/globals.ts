@@ -9,23 +9,34 @@ const userResponse = `{
   email
 }`;
 
+const checkResponse = `{
+  exists
+}`;
+
 export class UserMutations {
   static Instance = new UserMutations();
 
-  SAVE = gql`
+  REGISTER = gql`
         mutation Register($input: UserInput!) {
             register(input: $input)
             ${userResponse}
         }`;
+
+  LOGIN = gql`
+        mutation Login($input: LoginInput!) {
+            login(input: $input)
+            ${userResponse}
+        }
+        `;
 }
 
 export class UserQueries {
   static Instance = new UserQueries();
 
-  GET = gql`
-        query GetUserById($idArg: StringFilterInput) {
-            getUserById(id: $idArg)
-            ${userResponse}
+  CHECK_EMAIL = gql`
+        query CheckEmail($emailArg: String!) {
+            checkEmail(email: $emailArg)
+            ${checkResponse}
         }`;
 }
 
@@ -40,5 +51,10 @@ export class UserInputs {
     email: 'test@btk.com',
     password: '12345687',
     userType: UserTypeEnum[UserTypeEnum.PLAYER],
+  };
+
+  LOGIN_INPUT_1 = {
+    email: 'test@btk.com',
+    password: '12345687',
   };
 }

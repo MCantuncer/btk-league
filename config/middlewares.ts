@@ -13,10 +13,3 @@ export const TypegooseMiddleware: MiddlewareFn = async (_, next) => {
     throw e;
   }
 };
-
-// function convertDocument(doc: Document) {
-//   const convertedDocument = doc.toObject();
-//   const DocumentClass = getClassForDocument(doc)!;
-//   Object.setPrototypeOf(convertedDocument, DocumentClass.prototype);
-//   return convertedDocument;
-// }
