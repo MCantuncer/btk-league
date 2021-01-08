@@ -23,6 +23,11 @@ class Client {
           id: 'ebc44860-e523-45b8-b165-de1b001ae8df',
           email: 'test@btk.com',
         },
+        res: {
+          cookie: function (x, y, z) {
+            return true;
+          },
+        },
       };
     });
 

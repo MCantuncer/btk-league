@@ -23,14 +23,6 @@ export default class {
 
   @Mutation(() => User)
   async register(@Ctx() { res }, @Arg('input') input: UserInput): Promise<User | null> {
-    if (!res)
-      // For test TODO: Mock Ctx's res.cookie function.
-      res = {
-        cookie: function (x, y, z) {
-          return true;
-        },
-      };
-
     copyFields(input, 'id', '_id');
     const user = await UserManager.registerUser(input);
 
@@ -42,13 +34,6 @@ export default class {
 
   @Mutation(() => User)
   async login(@Ctx() { res }, @Arg('input') input: LoginInput): Promise<User | null> {
-    if (!res)
-      res = {
-        cookie: function (x, y, z) {
-          return true;
-        },
-      };
-
     const email = input.email;
     const user = await UserModel.findOne({ email }).lean();
 
