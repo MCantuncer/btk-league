@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User Tests Check Email 1`] = `
+Object {
+  "checkEmail": Object {
+    "exists": true,
+  },
+}
+`;
+
+exports[`User Tests Login User 1`] = `
+Object {
+  "login": Object {
+    "email": "test@btk.com",
+    "firstName": "Test",
+    "id": "0bbdcc9f-a146-4d1b-a2bc-65257dadbd48",
+    "lastName": "BTK",
+    "userType": "PLAYER",
+  },
+}
+`;
+
+exports[`User Tests Register a User 1`] = `
+Object {
+  "register": Object {
+    "email": "test@btk.com",
+    "firstName": "Test",
+    "id": "0bbdcc9f-a146-4d1b-a2bc-65257dadbd48",
+    "lastName": "BTK",
+    "userType": "PLAYER",
+  },
+}
+`;
