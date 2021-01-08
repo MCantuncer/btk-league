@@ -2,6 +2,7 @@ import { testMutate, testQuery } from '../../jest.setup';
 import { UserInputs, UserMutations, UserQueries } from './globals';
 import { User } from '../../src/models/user/entity';
 import { CheckResponse } from '../../src/api/user/models';
+import { createUUID } from '../../src/utils/dataUtils';
 
 describe('User Tests', () => {
   it('Register a User', async () => {
@@ -14,6 +15,18 @@ describe('User Tests', () => {
     expect(response.register.email).toEqual(UserInputs.Instance().REGISTER_INPUT_1.email);
 
     expect(response).toMatchSnapshot();
+  });
+
+  it('Invalid Register a User with Exist Email', async () => {
+    const graphqlResponse = await testMutate(UserMutations.Instance.REGISTER, {
+      input: { ...UserInputs.Instance().REGISTER_INPUT_1, id: createUUID() },
+    });
+
+    expect(graphqlResponse.errors).not.toBeUndefined();
+
+    expect(graphqlResponse.errors![0].extensions!.code).toEqual('ARGUMENT_VALIDATION_ERROR');
+
+    expect(graphqlResponse).toMatchSnapshot();
   });
 
   it('Login User', async () => {

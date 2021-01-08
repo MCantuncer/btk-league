@@ -8,6 +8,34 @@ Object {
 }
 `;
 
+exports[`User Tests Invalid Register a User with Exist Email 1`] = `
+Object {
+  "data": null,
+  "errors": Array [
+    Object {
+      "extensions": Object {
+        "code": "ARGUMENT_VALIDATION_ERROR",
+        "validationErrors": Array [
+          Object {
+            "errors": Array [
+              "Email is already exist.",
+            ],
+            "path": "email",
+          },
+        ],
+      },
+      "message": "Argument Validation Error",
+    },
+  ],
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
 exports[`User Tests Login User 1`] = `
 Object {
   "login": Object {

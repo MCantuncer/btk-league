@@ -22,4 +22,9 @@ export class UserManager {
 
     return user;
   };
+
+  static checkEmail = async (email: string) => {
+    const user = await UserModel.findOne({ email: email }).exec();
+    return !!user;
+  };
 }

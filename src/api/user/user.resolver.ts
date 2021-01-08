@@ -35,7 +35,7 @@ export default class {
   @Mutation(() => User)
   async login(@Ctx() { res }, @Arg('input') input: LoginInput): Promise<User | null> {
     const email = input.email;
-    const user = await UserModel.findOne({ email }).lean();
+    const user = await UserModel.findOne({ email: email }).exec();
 
     if (user && (await verify(user.password, input.password))) {
       const token = UserHelpers.getToken(user, common.deploy_host);
