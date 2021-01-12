@@ -31,20 +31,3 @@ export const formatError = (error: GraphQLError) => {
 
   return error;
 };
-
-// export function populateFields<T>(
-//   refFields: string[] | undefined,
-//   fields: object,
-//   query: DocumentQuery<DocumentType<T>[], DocumentType<T>, {}>,
-// ) {
-//   // query.select(Object.keys(fields).join(' '));
-//   if (refFields && fields) {
-//     for (const refField of refFields) {
-//       if (fields.hasOwnProperty(refField)) {
-//         query = query.populate(refField);
-//       }
-//     }
-//   }
-//
-//   return query;
-// }
