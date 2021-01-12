@@ -7,6 +7,7 @@ const userResponse = `{
   firstName
   lastName
   email
+  standing
 }`;
 
 const checkResponse = `{

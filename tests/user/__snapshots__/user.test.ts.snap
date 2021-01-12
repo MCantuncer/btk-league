@@ -43,6 +43,7 @@ Object {
     "firstName": "Test",
     "id": "0bbdcc9f-a146-4d1b-a2bc-65257dadbd48",
     "lastName": "BTK",
+    "standing": 1,
     "userType": "PLAYER",
   },
 }
@@ -55,6 +56,7 @@ Object {
     "firstName": "Test",
     "id": "0bbdcc9f-a146-4d1b-a2bc-65257dadbd48",
     "lastName": "BTK",
+    "standing": 1,
     "userType": "PLAYER",
   },
 }

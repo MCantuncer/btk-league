@@ -1,4 +1,4 @@
-import { Field, ObjectType } from 'type-graphql';
+import { Field, Int, ObjectType } from 'type-graphql';
 import { getModelForClass, prop } from '@typegoose/typegoose';
 import { UserTypeEnum } from './enums';
 import { EntityWithIdAndDates } from '../base';
@@ -24,6 +24,10 @@ export class User extends EntityWithIdAndDates {
   @prop()
   @Field(() => String)
   password: string;
+
+  @prop()
+  @Field(() => Int, { nullable: true })
+  standing?: number | null;
 }
 
 export const UserModel = getModelForClass(User, {

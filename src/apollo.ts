@@ -5,6 +5,7 @@ import { ApolloServer } from 'apollo-server-express';
 import { authChecker } from './permissions';
 import { GraphQLTimestamp } from 'type-graphql';
 import { formatError } from './graphql/helpers';
+import { UserHelpers } from './api/user/helpers';
 
 export default async (context?): Promise<ApolloServer> => {
   const schema = await buildFederatedSchema({
@@ -30,7 +31,12 @@ export default async (context?): Promise<ApolloServer> => {
       : ({ req, res }) => {
           // Builds context data by using request headers
           if (req) {
-            const user = req.headers.user ? JSON.parse(<string>req.headers.user) : null;
+            let user;
+            if (req.headers.authorization) {
+              const [tokenType, token] = req.headers.authorization.split(' ');
+              if (tokenType == 'Bearer') user = UserHelpers.verifyToken(token);
+            }
+            // const user = req.headers.user ? JSON.parse(<string>req.headers.user) : null;
             return { user, req, res };
           }
           return {};
