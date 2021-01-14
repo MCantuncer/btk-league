@@ -44,6 +44,8 @@ export class UserQueries {
 export class UserInputs {
   static Instance = () => new UserInputs();
   static CREATE_ID_1 = '0bbdcc9f-a146-4d1b-a2bc-65257dadbd48';
+  static CREATE_ID_2 = '05837b13-6c10-45f8-9ed5-a88fa6ef9ff2';
+  static CREATE_ID_3 = 'dfc9cac2-4240-43d1-9274-1dde9e4a6b18';
 
   REGISTER_INPUT_1 = {
     id: UserInputs.CREATE_ID_1,

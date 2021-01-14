@@ -3,6 +3,8 @@ import { LogLevels, mongoose, ReturnModelType, setLogLevel } from '@typegoose/ty
 import { MongoMemoryReplSet } from 'mongodb-memory-server';
 import { UserModel } from '../models/user/entity';
 import { ClientSession } from 'mongoose';
+import { MatchModel } from '../models/match/entity';
+import { ChallengeModel } from '../models/challenge/entity';
 
 export class DatabaseHelpers {
   static async connectDatabase(connString): Promise<void> {
@@ -49,7 +51,7 @@ export const connectDatabase = async (): Promise<void> => {
 };
 
 export const createCollections = async (): Promise<void> => {
-  await DatabaseHelpers.createCollections([UserModel]);
+  await DatabaseHelpers.createCollections([UserModel, MatchModel, ChallengeModel]);
 };
 
 export const closeDatabaseConn = async (): Promise<void> => {

@@ -1,6 +1,6 @@
-import { Field, ObjectType } from 'type-graphql';
+import { ObjectType } from 'type-graphql';
 import { EntityWithIdAndDates } from '../base';
-import { modelOptions, prop, Ref } from '@typegoose/typegoose';
+import { getModelForClass, modelOptions, prop, Ref } from '@typegoose/typegoose';
 import { User } from '../user/entity';
 import { WinnerEnum } from './enums';
 
@@ -14,7 +14,6 @@ export class SetResult {
   visitorGame: number;
 
   @prop()
-  @Field(() => WinnerEnum, { nullable: true })
   winner?: WinnerEnum | null;
 }
 
@@ -35,3 +34,7 @@ export class Match extends EntityWithIdAndDates {
   @prop()
   matchDate?: Date | null;
 }
+
+export const MatchModel = getModelForClass(Match, {
+  schemaOptions: { collection: 'matches' },
+});

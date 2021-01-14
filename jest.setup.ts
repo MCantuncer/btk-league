@@ -2,6 +2,7 @@ import { lang } from './locales/i18n/locale.service';
 import { closeDatabaseConn, connectDatabase, createCollections } from './src/helpers/database';
 import apollo from './src/apollo';
 import { ApolloServerTestClient } from 'apollo-server-testing';
+import { TEST_USER_ID } from './src/utils/constants';
 
 const { createTestClient } = require('apollo-server-testing');
 
@@ -20,7 +21,7 @@ class Client {
     const apolloServer = await apollo(() => {
       return {
         user: {
-          id: 'ebc44860-e523-45b8-b165-de1b001ae8df',
+          id: TEST_USER_ID,
           email: 'test@btk.com',
         },
         res: {
