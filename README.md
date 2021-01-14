@@ -1,6 +1,6 @@
 # league-of-btk
 
-Hi there, we are a small tennis community (for fun) and planning to make league system.
+Hi there, we have a small tennis community (for fun) and goal to make league system.
 
 This is the backend side of the league (in progress). Developed with TypeScript, MongoDB, GraphQL API. Jest is used for tests. React will be used for frontend, and try to deploy aws.
 
