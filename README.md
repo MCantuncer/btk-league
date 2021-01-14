@@ -7,17 +7,12 @@ This is the backend side of the league (in progress). Developed with TypeScript,
 League Properties and Rules:
 
 Member:
-* has a default standing which is organized by coaches (for first time),
-* must challenge 2 people in a month.
-* can challenge only better players on standing (up by max 3). For example, if I am 17th in the league, then I can challenge 16th, 15th and 14th player.
+* <sub>has a default standing which is organized by coaches (for first time),</sub>
+* <sub>must challenge 2 people in a month.</sub>
+* <sub>can challenge only better players on standing (up by max 3). For example, if I am 17th in the league, then I can challenge 16th, 15th and 14th player.</sub>
 
-  Match:
-    * match is bo3 and 4 game set.
-    * set is finished by 5 - 3, 4 - (less than 3), or tiebreaker (7).
-    * if match is 2-2 on sets, last set is a tiebreaker set (10).
-    
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
-    
+Match:
+* <sub>match is bo3 and 4 game set.</sub>
+* <sub>set is finished by 5 - 3, 4 - (less than 3), or tiebreaker (7).</sub>
+* <sub>if match is 2-2 on sets, last set is a tiebreaker set (10).</sub>
+
