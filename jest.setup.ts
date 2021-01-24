@@ -29,6 +29,9 @@ class Client {
             return true;
           },
         },
+        req: {
+          session: {},
+        },
       };
     });
 

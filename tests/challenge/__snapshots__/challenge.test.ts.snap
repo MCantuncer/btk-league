@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Challenge Tests Accept a Challenge 1`] = `
+Object {
+  "respondChallenge": Object {
+    "accepted": true,
+    "challenged": "ebc44860-e523-45b8-b165-de1b001ae8df",
+    "challenger": "dfc9cac2-4240-43d1-9274-1dde9e4a6b18",
+    "deleted": false,
+    "id": "b5f6b1da-aefd-4c0f-86d9-3551503aea83",
+  },
+}
+`;
+
+exports[`Challenge Tests List Challenges that User Challenged 1`] = `
+Object {
+  "challengedList": Array [
+    Object {
+      "accepted": null,
+      "challenged": "0bbdcc9f-a146-4d1b-a2bc-65257dadbd48",
+      "challenger": "ebc44860-e523-45b8-b165-de1b001ae8df",
+      "deleted": false,
+      "id": "bfa762a8-e4ad-456f-8de9-2c59c753a3c8",
+    },
+    Object {
+      "accepted": null,
+      "challenged": "05837b13-6c10-45f8-9ed5-a88fa6ef9ff2",
+      "challenger": "ebc44860-e523-45b8-b165-de1b001ae8df",
+      "deleted": false,
+      "id": "6592622d-bb40-497a-b92c-452bdaa4320a",
+    },
+  ],
+}
+`;
+
+exports[`Challenge Tests List Challenges that User is Challenged By 1`] = `
+Object {
+  "challengedByList": Array [
+    Object {
+      "accepted": null,
+      "challenged": "ebc44860-e523-45b8-b165-de1b001ae8df",
+      "challenger": "dfc9cac2-4240-43d1-9274-1dde9e4a6b18",
+      "deleted": false,
+      "id": "b5f6b1da-aefd-4c0f-86d9-3551503aea83",
+    },
+  ],
+}
+`;
+
+exports[`Challenge Tests Make a Challenge 1`] = `
+Object {
+  "makeChallenge": Object {
+    "accepted": null,
+    "challenged": "0bbdcc9f-a146-4d1b-a2bc-65257dadbd48",
+    "challenger": "ebc44860-e523-45b8-b165-de1b001ae8df",
+    "deleted": false,
+    "id": "bfa762a8-e4ad-456f-8de9-2c59c753a3c8",
+  },
+}
+`;
+
+exports[`Challenge Tests Make another Challenge 1`] = `
+Object {
+  "makeChallenge": Object {
+    "accepted": null,
+    "challenged": "05837b13-6c10-45f8-9ed5-a88fa6ef9ff2",
+    "challenger": "ebc44860-e523-45b8-b165-de1b001ae8df",
+    "deleted": false,
+    "id": "6592622d-bb40-497a-b92c-452bdaa4320a",
+  },
+}
+`;

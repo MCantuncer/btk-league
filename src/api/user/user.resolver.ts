@@ -33,13 +33,14 @@ export default class {
   }
 
   @Mutation(() => User)
-  async login(@Ctx() { res }, @Arg('input') input: LoginInput): Promise<User | null> {
+  async login(@Ctx() { req, res }, @Arg('input') input: LoginInput): Promise<User | null> {
     const email = input.email;
     const user = await UserModel.findOne({ email: email }).exec();
 
     if (user && (await verify(user.password, input.password))) {
       const token = UserHelpers.getToken(user, common.deploy_host);
       res.cookie(SESSION_COOKIE_NAME, token, COOKIE_OPTIONS);
+      req.session.userId = user.id;
 
       return user;
     } else {
