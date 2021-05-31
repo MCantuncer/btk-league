@@ -1,8 +1,8 @@
 import database from '../../config/database';
-import { LogLevels, mongoose, ReturnModelType, setLogLevel } from '@typegoose/typegoose';
+import { DocumentType, LogLevels, mongoose, ReturnModelType, setLogLevel } from '@typegoose/typegoose';
 import { MongoMemoryReplSet } from 'mongodb-memory-server';
 import { UserModel } from '../models/user/entity';
-import { ClientSession } from 'mongoose';
+import { ClientSession, DocumentQuery, Model } from 'mongoose';
 import { MatchModel } from '../models/match/entity';
 import { ChallengeModel } from '../models/challenge/entity';
 
@@ -71,6 +71,31 @@ export async function withTransaction<T>(func: (session: ClientSession) => Promi
     throw err;
   } finally {
     session.endSession();
+  }
+}
+
+export class ModelUtils {
+  public static async filterWithArgs<T>(query: DocumentQuery<DocumentType<T>[], DocumentType<T>, {}>, args: any) {
+    for (let key of Object.keys(args)) {
+      const filterInput = args[key];
+      if (key === 'id') key = '_id';
+
+      if (typeof filterInput.filterQuery == 'function' && Object.keys(filterInput).length !== 0) {
+        query = filterInput.filterQuery(query, key);
+      }
+    }
+
+    return () => query;
+  }
+
+  public static async findAndFilter<T>(manager: Model<DocumentType<T>>, args: any) {
+    // @ts-ignore
+    let query = manager.find();
+    if (args) {
+      query = (await ModelUtils.filterWithArgs(query, args))();
+    }
+
+    return () => query;
   }
 }
 
