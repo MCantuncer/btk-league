@@ -5,6 +5,9 @@ import { UserModel } from '../models/user/entity';
 import { ClientSession, DocumentQuery, Model } from 'mongoose';
 import { MatchModel } from '../models/match/entity';
 import { ChallengeModel } from '../models/challenge/entity';
+import { PaginationInput } from '../graphql/filters';
+import { IPaginationResponse } from '../graphql/pagination';
+import { ClassType } from 'type-graphql';
 
 export class DatabaseHelpers {
   static async connectDatabase(connString): Promise<void> {
@@ -96,6 +99,27 @@ export class ModelUtils {
     }
 
     return () => query;
+  }
+
+  public static async applyPagination<T, U extends IPaginationResponse<T>>(
+    query: DocumentQuery<DocumentType<T>[], DocumentType<T>, {}>,
+    paginationInput: PaginationInput,
+    PaginationResponseClass: ClassType<U>,
+  ) {
+    // @ts-ignore
+    const count = await query.model.find().merge(query).countDocuments().exec();
+    const skip = paginationInput.skip;
+    const limit = paginationInput.limit;
+
+    query = query.skip(skip).limit(limit);
+    const response = new PaginationResponseClass();
+    response.count = count;
+    response.limit = limit;
+    response.page = paginationInput.page;
+    response.hasNext = skip + limit < count;
+    response.data = await query.lean();
+
+    return response;
   }
 }
 
