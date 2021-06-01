@@ -9,7 +9,7 @@ module.exports = {
       tsConfig: 'tsconfig.json',
     },
   },
-  testRegex: 'tests/*/.*.(test|spec)\\.[jt]s?$',
+  testRegex: '__tests__/*/.*.(test|spec)\\.[jt]s?$',
   cacheDirectory: '.jest/cache',
   coverageReporters: ['text', 'cobertura'],
   reporters: ['default', 'jest-junit'],
