@@ -83,6 +83,48 @@ Object {
 }
 `;
 
+exports[`Match Tests List Matches 1`] = `
+Object {
+  "listMatches": Object {
+    "count": 2,
+    "data": Array [
+      Object {
+        "deleted": false,
+        "home": "0bbdcc9f-a146-4d1b-a2bc-65257dadbd48",
+        "id": "5bacbea0-8126-41bb-a9da-e20d86398e69",
+        "matchDate": null,
+        "matchWinner": "VISITOR",
+        "result": Array [
+          Object {
+            "homeGame": 3,
+            "visitorGame": 6,
+            "winner": "VISITOR",
+          },
+          Object {
+            "homeGame": 3,
+            "visitorGame": 6,
+            "winner": "VISITOR",
+          },
+        ],
+        "visitor": "05837b13-6c10-45f8-9ed5-a88fa6ef9ff2",
+      },
+      Object {
+        "deleted": false,
+        "home": "05837b13-6c10-45f8-9ed5-a88fa6ef9ff2",
+        "id": "ce6429be-8660-4282-b6f6-4f07c4b434be",
+        "matchDate": null,
+        "matchWinner": null,
+        "result": null,
+        "visitor": "0bbdcc9f-a146-4d1b-a2bc-65257dadbd48",
+      },
+    ],
+    "hasNext": false,
+    "limit": 50,
+    "page": 1,
+  },
+}
+`;
+
 exports[`Match Tests Update a Match 1`] = `
 Object {
   "upsertMatch": Object {

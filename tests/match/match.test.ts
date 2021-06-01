@@ -83,6 +83,14 @@ describe('Match Tests', () => {
     const graphqlResponse = await testQuery(MatchQueries.Instance.LIST_MATCHES);
 
     expect(graphqlResponse.errors).toBeUndefined();
+
+    const response = (graphqlResponse.data || {}) as { listMatches: { data: Match[] } };
+
+    removeMatchDateFromMatchList(response.listMatches.data);
+
+    expect(response.listMatches.data).toHaveLength(2);
+
+    expect(response).toMatchSnapshot();
   });
   it('Filter Matches by Home Player', async () => {
     const graphqlResponse = await testQuery(MatchQueries.Instance.LIST_MATCHES, {
