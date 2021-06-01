@@ -36,7 +36,7 @@ export default class {
     const challenge = await ChallengeModel.findOne({ _id: input.challengeId }).exec();
 
     if (input.accepted && challenge) {
-      await MatchManager.createMatch(challenge);
+      await MatchManager.createMatchViaChallenge(challenge);
     }
 
     return challenge;

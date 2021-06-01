@@ -4,7 +4,7 @@ import { createUUID } from '../../utils/dataUtils';
 import { withTransaction } from '../../helpers/database';
 
 export class MatchManager {
-  static createMatch = async (challenge: Challenge): Promise<Match> => {
+  static createMatchViaChallenge = async (challenge: Challenge): Promise<Match> => {
     const match = new MatchModel({
       _id: createUUID(),
       home: challenge.challenged,
